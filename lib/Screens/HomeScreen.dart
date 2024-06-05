@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Enter details",style: TextStyle(color: Colors.black),),
-        elevation: 0,
+        elevation: 1,
         backgroundColor: Colors.white,
         actions: [
           GestureDetector(
@@ -59,7 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          
+
+              SizedBox(height: 7,),
+
               // Chalan section starts here
               Row(
                 children: [
@@ -158,10 +160,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       margin: EdgeInsets.only(top: 10, bottom: 10),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.blue,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
                       ),
-                      child: Text("Add Product",style: TextStyle(color: Colors.white),),
+                      child: Row(
+                        children: [
+                          Icon(Icons.add,color: Colors.white,),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -173,7 +187,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: Container(
         height: 70,
-        decoration: BoxDecoration(),
         child: GestureDetector(
           onTap: () async {
             if(InvoiceController.chalanNo.value == ""){
@@ -191,14 +204,48 @@ class _HomeScreenState extends State<HomeScreen> {
                   autoDismiss:  true
               ).show(context);
             }
-            // final tablePDF = await TablePDFApi.generateTablePDF();
-            // SaveAndOpenPDF.openPDF(tablePDF);
+            // print(ProductController.productList[0] == Product(pname: "", pprice: 0, qty: 1, subttl: 0, margin: 0, ss: null, clr: null, profit : 0));
+            // print(ProductController.productList[0].pname == "");
+            // print(ProductController.productList[0].pprice == 0);
+            // print(ProductController.productList[0].qty == 1);
+            // print(ProductController.productList[0].subttl == 0);
+            // print(ProductController.productList[0].margin == 0);
+            // print(ProductController.productList[0].ss == null);
+            // print(ProductController.productList[0].clr == null);
+            // print(ProductController.productList[0].profit == 0);
+
+            //(ProductController.productList[0].pname == "" && ProductController.productList[0].pprice == 0 && ProductController.productList[0].qty == 1 &&
+            // ProductController.productList[0].subttl == 0 && ProductController.productList[0].margin == 0 && ProductController.productList[0].ss == null &&
+            // ProductController.productList[0].clr == null && ProductController.productList[0].profit == 0)
+            else if(ProductController.productList.length == 1 &&
+            (ProductController.productList[0].pname == "" && ProductController.productList[0].pprice == 0 && ProductController.productList[0].qty == 1 &&
+            ProductController.productList[0].subttl == 0 && ProductController.productList[0].margin == 0 && ProductController.productList[0].ss == null &&
+            ProductController.productList[0].clr == null && ProductController.productList[0].profit == 0)
+            ){
+              CherryToast.error(
+                  description:  Text("Please enter atleast one record", style: TextStyle(color: Colors.black)),
+                  animationType:  AnimationType.fromRight,
+                  animationDuration:  Duration(milliseconds:  1000),
+                  autoDismiss:  true
+              ).show(context);
+            }else{
+              final tablePDF = await TablePDFApi.generateTablePDF();
+              SaveAndOpenPDF.openPDF(tablePDF);
+            }
           },
           child: Container(
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-                color: Colors.blue
+                color: Colors.blue,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade300,
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: const Offset(0, 5),
+                ),
+              ],
             ),
             alignment: Alignment.center,
             child: Text("Preview",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 17),textAlign: TextAlign.center,),

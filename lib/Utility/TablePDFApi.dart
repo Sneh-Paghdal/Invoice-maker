@@ -12,13 +12,15 @@ class TablePDFApi {
     final pdf = pw.Document();
     ProductX ProductController = Get.put(ProductX());
     InvoiceX InvoiceController = Get.put(InvoiceX());
+    // print(ProductController.productList[1] == Product(pid: 0, pname: "", pprice: 0, qty: 1, subttl: 0, margin: 0, ss: null, clr: null, profit : 0));
     pdf.addPage(
         pw.Page(build: (pw.Context context) {
       return pw.Container(
           width: double.infinity,
           // decoration: pw.BoxDecoration(
           //     border: pw.Border(top: pw.BorderSide(color: PdfColors.black, width: 1),left: pw.BorderSide(color: PdfColors.black, width: 1),right: pw.BorderSide(color: PdfColors.black, width: 1))),
-          child: pw.Column(children: [
+          child: pw.Column(
+              children: [
             pw.Container(
                 padding: pw.EdgeInsets.all(10),
                 width: double.infinity,
@@ -85,7 +87,7 @@ class TablePDFApi {
                               child: pw.Text("CHALLAN",
                                   style: pw.TextStyle(
                                       fontWeight: pw.FontWeight.bold,
-                                      fontSize: 18)),
+                                      fontSize: 16)),
                             ),
                             pw.Container(
                                 padding: pw.EdgeInsets.all(7),
@@ -184,7 +186,9 @@ class TablePDFApi {
                           child: pw.Text("Total"))),
                 ])),
             for (int i = 0; i < ProductController.productList.length; i++) ...[
-              if(ProductController.productList[i] != Product(pid: 0, pname: "", pprice: 0, qty: 1, subttl: 0, margin: 0, ss: null, clr: null, profit : 0))...[
+              if(!(ProductController.productList[i].pname == "" && ProductController.productList[i].pprice == 0 && ProductController.productList[i].qty == 1 &&
+                  ProductController.productList[i].subttl == 0 && ProductController.productList[i].margin == 0 && ProductController.productList[i].ss == null &&
+                  ProductController.productList[i].clr == null && ProductController.productList[i].profit == 0))...[
               pw.Container(
                   decoration: pw.BoxDecoration(
                     border: pw.Border(
@@ -280,8 +284,18 @@ class TablePDFApi {
                                 style: pw.TextStyle(fontSize: 10)))),
                   ]))
               ]
-            ]
-          ]));
+            ],
+                pw.Spacer(),
+                pw.Row(
+                  mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                  children: [
+                    pw.Text("Developer contact : ",style: pw.TextStyle(fontSize: 11)),
+                    pw.Text("+91 8140850535",style: pw.TextStyle(fontSize: 11))
+                  ]
+                )
+              ]
+          )
+      );
     }));
     final timestamp = DateTime.now().millisecondsSinceEpoch;
     String tmp_name = "invoice_$timestamp.pdf";
