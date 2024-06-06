@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="print_invoice"
+        android:label="Billbuilder"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

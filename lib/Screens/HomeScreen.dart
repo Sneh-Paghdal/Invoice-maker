@@ -65,27 +65,27 @@ class _HomeScreenState extends State<HomeScreen> {
               // Chalan section starts here
               Row(
                 children: [
-                  Expanded(
-                    flex: 1,
-                    child: TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          labelText: 'Chalan Number',
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0)
-                      ),
-                      textCapitalization: TextCapitalization.characters,
-                      onTap: () => _chalan.selection = TextSelection(baseOffset: 0, extentOffset: _chalan.value.text.length),
-                      controller: _chalan,
-                      onChanged: (value){
-                        if(value != ""){
-                          InvoiceController.chalanNo.value = value.toString();
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(width: 10,),
+                  // Expanded(
+                  //   flex: 1,
+                  //   child: TextField(
+                  //     decoration: InputDecoration(
+                  //         border: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(10),
+                  //         ),
+                  //         labelText: 'Chalan Number',
+                  //         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0)
+                  //     ),
+                  //     textCapitalization: TextCapitalization.characters,
+                  //     onTap: () => _chalan.selection = TextSelection(baseOffset: 0, extentOffset: _chalan.value.text.length),
+                  //     controller: _chalan,
+                  //     onChanged: (value){
+                  //       if(value != ""){
+                  //         InvoiceController.chalanNo.value = value.toString();
+                  //       }
+                  //     },
+                  //   ),
+                  // ),
+                  // SizedBox(width: 10,),
                   Expanded(
                     flex: 1,
                     child: GestureDetector(
@@ -189,14 +189,15 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 70,
         child: GestureDetector(
           onTap: () async {
-            if(InvoiceController.chalanNo.value == ""){
-              CherryToast.error(
-                  description:  Text("Chalan number is required", style: TextStyle(color: Colors.black)),
-                  animationType:  AnimationType.fromRight,
-                  animationDuration:  Duration(milliseconds:  1000),
-                  autoDismiss:  true
-              ).show(context);
-            }else if(InvoiceController.dateX.value == ""){
+            // if(InvoiceController.chalanNo.value == ""){
+            //   CherryToast.error(
+            //       description:  Text("Chalan number is required", style: TextStyle(color: Colors.black)),
+            //       animationType:  AnimationType.fromRight,
+            //       animationDuration:  Duration(milliseconds:  1000),
+            //       autoDismiss:  true
+            //   ).show(context);
+            // }else
+              if(InvoiceController.dateX.value == ""){
               CherryToast.error(
                   description:  Text("Date is required", style: TextStyle(color: Colors.black)),
                   animationType:  AnimationType.fromRight,

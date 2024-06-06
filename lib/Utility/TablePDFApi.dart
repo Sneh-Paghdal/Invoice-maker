@@ -92,11 +92,11 @@ class TablePDFApi {
                             pw.Container(
                                 padding: pw.EdgeInsets.all(7),
                                 child: pw.Column(children: [
-                                  pw.Row(children: [
-                                    pw.Text("Num :"),
-                                    pw.Spacer(),
-                                    pw.Text("${InvoiceController.chalanNo.value}")
-                                  ]),
+                                  // pw.Row(children: [
+                                  //   pw.Text("Num :"),
+                                  //   pw.Spacer(),
+                                  //   pw.Text("${InvoiceController.chalanNo.value}")
+                                  // ]),
                                   pw.Row(children: [
                                     pw.Text("Date :"),
                                     pw.Spacer(),
@@ -125,7 +125,7 @@ class TablePDFApi {
                             ),
                           ),
                           alignment: pw.Alignment.center,
-                          child: pw.Text("Person"))),
+                          child: pw.Text("Chalan"))),
                   pw.Expanded(
                       child: pw.Container(
                           alignment: pw.Alignment.center,
@@ -164,26 +164,40 @@ class TablePDFApi {
                             border: pw.Border(
                                 right: pw.BorderSide(
                                     color: PdfColors.black, width: 1)),
+                            // color: PdfColors.green50,
                           ),
                           child: pw.Text("Margin"))),
                   pw.Expanded(
                       child: pw.Container(
                           alignment: pw.Alignment.center,
-                          padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                          // padding: pw.EdgeInsets.only(top: 7, bottom: 7),
                           decoration: pw.BoxDecoration(
                             border: pw.Border(
                                 right: pw.BorderSide(
                                     color: PdfColors.black, width: 1)),
                           ),
-                          child: pw.Text("Profit"))),
+                          child: pw.Container(
+                              width: double.infinity, alignment: pw.Alignment.center,
+                              margin: pw.EdgeInsets.all(1),
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              color: PdfColors.green200,
+                              child: pw.Text("Profit")
+                          ))),
                   pw.Expanded(
                       child: pw.Container(
                           alignment: pw.Alignment.center,
                           decoration: pw.BoxDecoration(
-                            border: pw.Border(right: pw.BorderSide(color: PdfColors.black, width: 1))
+                            border: pw.Border(right: pw.BorderSide(color: PdfColors.black, width: 1)),
                           ),
-                          padding: pw.EdgeInsets.only(top: 7, bottom: 7),
-                          child: pw.Text("Total"))),
+                          // padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                          child: pw.Container(
+                            width: double.infinity, alignment: pw.Alignment.center,
+                            margin: pw.EdgeInsets.all(1),
+                            padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                            color: PdfColors.yellow200,
+                            child: pw.Text("Total")
+                          )))
+                          // child: pw.Text("Total"))),
                 ])),
             for (int i = 0; i < ProductController.productList.length; i++) ...[
               if(!(ProductController.productList[i].pname == "" && ProductController.productList[i].pprice == 0 && ProductController.productList[i].qty == 1 &&
@@ -263,28 +277,121 @@ class TablePDFApi {
                     pw.Expanded(
                         child: pw.Container(
                             alignment: pw.Alignment.center,
-                            padding: pw.EdgeInsets.only(top: 7, bottom: 7),
                             decoration: pw.BoxDecoration(
                               border: pw.Border(
                                   right: pw.BorderSide(
                                       color: PdfColors.black, width: 1)),
                             ),
-                            child: pw.Text(
-                                "${ProductController.productList[i].profit}",
-                                style: pw.TextStyle(fontSize: 10)))),
+                            child: pw.Container(
+                                width: double.infinity, alignment: pw.Alignment.center,
+                                margin: pw.EdgeInsets.all(1),
+                                padding: pw.EdgeInsets.only(top: 6, bottom: 6),
+                                color: PdfColors.green200,
+                                child: pw.Text("${ProductController.productList[i].profit}",
+                                      style: pw.TextStyle(fontSize: 10))
+                            )
+                            // child: pw.Text(
+                            //     "${ProductController.productList[i].profit}",
+                            //     style: pw.TextStyle(fontSize: 10))
+                        )),
                     pw.Expanded(
                         child: pw.Container(
                             alignment: pw.Alignment.center,
                             decoration: pw.BoxDecoration(
                                 border: pw.Border(right: pw.BorderSide(color: PdfColors.black, width: 1))
                             ),
-                            padding: pw.EdgeInsets.only(top: 7, bottom: 7),
-                            child: pw.Text(
-                                "${ProductController.productList[i].subttl}",
-                                style: pw.TextStyle(fontSize: 10)))),
+                            // padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+
+                            child : pw.Container(
+                                width: double.infinity, alignment: pw.Alignment.center,
+                                margin: pw.EdgeInsets.all(1),
+                                padding: pw.EdgeInsets.only(top: 6, bottom: 6),
+                                color: PdfColors.yellow200,
+                                child: pw.Text("${ProductController.productList[i].subttl}",
+                                    style: pw.TextStyle(fontSize: 10))
+                            )
+
+                            // child: pw.Text(
+                            //     "${ProductController.productList[i].subttl}",
+                            //     style: pw.TextStyle(fontSize: 10))
+                        )),
                   ]))
               ]
             ],
+
+                pw.Container(
+                  margin: pw.EdgeInsets.only(top: 20),
+                    child: pw.Row(children: [
+                      pw.Expanded(
+                          flex: 2,
+                          child: pw.Container(
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              alignment: pw.Alignment.center,
+                              child: pw.Text(""))),
+                      pw.Expanded(
+                          child: pw.Container(
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              alignment: pw.Alignment.center,
+                              child: pw.Text(""))),
+                      pw.Expanded(
+                          child: pw.Container(
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              alignment: pw.Alignment.center,
+                              child: pw.Text(""))),
+                      pw.Expanded(
+                          child: pw.Container(
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              alignment: pw.Alignment.center,
+                              child: pw.Text(""))),
+                      pw.Expanded(
+                          child: pw.Container(
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              alignment: pw.Alignment.center,
+                              child: pw.Text(""))),
+                      pw.Expanded(
+                          child: pw.Container(
+                              alignment: pw.Alignment.center,
+                              // padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              decoration: pw.BoxDecoration(
+                                border: pw.Border(
+                                  top: pw.BorderSide(
+                                    color: PdfColors.black, width: 1),
+                                    bottom: pw.BorderSide(
+                                        color: PdfColors.black, width: 1),
+                                    left: pw.BorderSide(
+                                        color: PdfColors.black, width: 1),
+                                    right: pw.BorderSide(
+                                        color: PdfColors.black, width: 1)),
+                              ),
+                              child: pw.Container(
+                                  width: double.infinity, alignment: pw.Alignment.center,
+                                  margin: pw.EdgeInsets.all(1),
+                                  padding: pw.EdgeInsets.only(top: 6, bottom: 6),
+                                  color: PdfColors.green200,
+                                  child: pw.Text("${ProductController.sumOfProfit()}",style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
+                              ))),
+                      pw.Expanded(
+                          child: pw.Container(
+                              alignment: pw.Alignment.center,
+                              decoration: pw.BoxDecoration(
+                                border: pw.Border( top: pw.BorderSide(
+                                    color: PdfColors.black, width: 1),
+                                    bottom: pw.BorderSide(
+                                        color: PdfColors.black, width: 1),
+                                    right: pw.BorderSide(
+                                        color: PdfColors.black, width: 1)),
+                              ),
+                              // padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              child: pw.Container(
+                                  width: double.infinity, alignment: pw.Alignment.center,
+                                  margin: pw.EdgeInsets.all(1),
+                                  padding: pw.EdgeInsets.only(top: 6, bottom: 6),
+                                  color: PdfColors.yellow200,
+                                  child: pw.Text("${ProductController.sumOfTotal()}",style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
+                              )))
+                      // child: pw.Text("Total"))),
+                    ])),
+
                 pw.Spacer(),
                 pw.Row(
                   mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,

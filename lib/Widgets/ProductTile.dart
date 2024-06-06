@@ -124,8 +124,9 @@ class _ProductTileState extends State<ProductTile> {
                 borderRadius: BorderRadius.circular(10),
               ),
               contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-              labelText: "Person name",
+              labelText: "Chalan number",
             ),
+            keyboardType: TextInputType.number,
             controller: _pname,
             onChanged: (value) {
               ProductController.productList[widget.index].pname = _pname.text;
@@ -324,6 +325,7 @@ class _ProductTileState extends State<ProductTile> {
                   onTap: () => _qty.selection = TextSelection(baseOffset: 0, extentOffset: _qty.value.text.length),
                   controller: _qty,
                   textCapitalization: TextCapitalization.sentences,
+                  keyboardType: TextInputType.number,
                   onChanged: (value) => updateProductQty(widget.index, value),
                 ),
               ),
@@ -363,6 +365,7 @@ class _ProductTileState extends State<ProductTile> {
                     labelText: "Margin",
                   ),
                   controller: _margin,
+                  keyboardType: TextInputType.number,
                   onTap: () => _margin.selection = TextSelection(baseOffset: 0, extentOffset: _margin.value.text.length),
                   textCapitalization: TextCapitalization.sentences,
                   onChanged: (value) => updateMargin(widget.index, value),

@@ -44,4 +44,20 @@ class ProductX extends GetxController {
     update();
   }
 
+  int sumOfProfit(){
+    int total = 0;
+    for(int i = 0; i < productList.length; i++){
+      total = total + productList[i].profit;
+    }
+    return total;
+  }
+
+  int sumOfTotal(){
+    int total = 0;
+    for(int i = 0; i < productList.length; i++){
+      total = total + productList[i].subttl;
+    }
+    return total;
+  }
+
 }
