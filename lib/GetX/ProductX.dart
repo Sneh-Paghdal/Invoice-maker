@@ -60,4 +60,12 @@ class ProductX extends GetxController {
     return total;
   }
 
+  int sumOfQty(){
+    int total = 0;
+    for(int i = 0; i < productList.length; i++){
+      total = total + productList[i].qty;
+    }
+    return total;
+  }
+
 }

@@ -335,9 +335,23 @@ class TablePDFApi {
                               child: pw.Text(""))),
                       pw.Expanded(
                           child: pw.Container(
-                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
                               alignment: pw.Alignment.center,
-                              child: pw.Text(""))),
+                              // padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              decoration: pw.BoxDecoration(
+                                border: pw.Border(
+                                    top: pw.BorderSide(
+                                        color: PdfColors.black, width: 1),
+                                    bottom: pw.BorderSide(
+                                        color: PdfColors.black, width: 1),
+                                    left: pw.BorderSide(
+                                        color: PdfColors.black, width: 1),
+                                    right: pw.BorderSide(
+                                        color: PdfColors.black, width: 1)),
+                              ),
+                              padding: pw.EdgeInsets.only(top: 7, bottom: 7),
+                              child: pw.Text("${ProductController.sumOfQty()}",style: pw.TextStyle(fontWeight: pw.FontWeight.bold))
+                            // child: pw.Text("")
+                          )),
                       pw.Expanded(
                           child: pw.Container(
                               padding: pw.EdgeInsets.only(top: 7, bottom: 7),
